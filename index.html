@@ -1,0 +1,314 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+     <meta charset="utf-8">
+  <script type="text/javascript" src="jquery.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"/>
+<style type="text/css">
+
+.menu {
+	margin-left:15%;
+	margin-top:0px;
+	width:84%;
+	height:8%;
+	position: absolute;
+}
+
+.logo {
+	margin-top:15px;
+	margin-left:100px;
+	width:7%;
+	position: absolute;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #EC635A;
+	font-family: 'Today SB', 'Open Sans', 'Helvetica', arial, sans-serif;
+	font-weight: bold;
+	height: 60px;
+	line-height: 32px;
+	font-size:20px;
+	color:white;
+}
+
+li {
+    float: left; 
+}
+
+
+li a {
+    display: block;
+    color: #f9c3c0;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    color: white;
+}
+
+#menu a:active {
+     color:white;
+}
+
+.active {
+    color: #fff;
+	font-size:22px;
+}
+.about {
+	background-color: #F0847D;
+	float:right;
+}
+
+.mainframe {
+	z-index:-2;
+	width:98%;
+	height:90%;
+	margin-left:0px;
+	margin-top:0px;
+	position: absolute;
+
+}
+
+.frame_css {
+    border : 0;
+	z-index:1;
+	width:95%;
+	height:90%;
+	margin-left:5%;
+	margin-top:5%;
+	position: relative;
+}
+
+.frameHome_css{
+	z-index:1;
+	width:95%;
+	height:1400px;
+	margin-left:5%;
+	margin-top:7%;
+	position: relative;
+}
+    
+/**/
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Open Sans', 'Helvetica', arial, sans-serif;
+	font-weight: bold;
+	font-size:20px;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #f7a35c;
+}
+
+li.dropdown {
+    display: inline-block;
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color:  #423e3e;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-family:  'Open Sans', 'Helvetica', arial, sans-serif;
+	font-weight: bold;
+	font-size:16px;
+}
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+ a, img {
+    border:none !important ;
+    outline:none !important ;
+}   
+  </style>
+  
+  <title>Portail des données @AFD_France - @Thomas_Roca</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85673723-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+<script type='text/javascript'>
+
+	$(window).load(function(){
+	
+		$('#frame').html('<iframe src="home.html" width="100%" height="100%" frameborder="0"></iframe>');
+		
+		$("#Glance").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="Glance.html" width="95%" height="95%" frameborder="0"></iframe>');
+		    $(this).addClass('active');
+			$("#Inequality").removeClass('active');
+			$("#Data").removeClass('active');
+			$("#Country_Dashboard").removeClass('active');
+			$("#home").removeClass('active');
+			$("#local").removeClass('active');
+            $("#BigBrowser").removeClass('active');
+		});
+		//$(this).addClass('active');
+
+		$("#Inequality").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="inequalityDashboard.html" width="100%" height="100%" frameborder="0"></iframe>');
+		   $(this).addClass('active');
+		   	$("#Glance").removeClass('active');
+			$("#Data").removeClass('active');
+			$("#Country_Dashboard").removeClass('active');
+			$("#about").removeClass('active');
+			$("#home").removeClass('active');
+			$("#local").removeClass('active');
+            $("#BigBrowser").removeClass('active');
+		});
+
+		$("#home").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="home.html" width="100%" height="100%" frameborder="0"></iframe>');
+		   $(this).addClass('active');
+		   	$("#Glance").removeClass('active');
+			$("#Data").removeClass('active');
+			$("#Country_Dashboard").removeClass('active');
+			$("#about").removeClass('active');
+			$("#local").removeClass('active');
+            $("#BigBrowser").removeClass('active');
+
+		});
+
+		$("#Data").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="data_code.html" width="100%" height="100%" frameborder="0"></iframe>');
+		   $(this).addClass('active');
+		   	$("#Glance").removeClass('active');
+			$("#Country_Dashboard").removeClass('active');
+			$("#Inequality").removeClass('active');
+			$("#about").removeClass('active');
+			$("#home").removeClass('active');
+			$("#local").removeClass('active');
+            $("#BigBrowser").removeClass('active');
+		});
+
+		$("#Country_Dashboard").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="Country_dashboard.html" width="100%" height="100%" frameborder="0"></iframe>');
+		   $(this).addClass('active');
+		   	$("#Glance").removeClass('active');
+			$("#Data").removeClass('active');
+			$("#Inequality").removeClass('active');
+			$("#about").removeClass('active');
+			$("#home").removeClass('active');
+			$("#local").removeClass('active');
+            $("#BigBrowser").removeClass('active');
+		});
+		
+		$("#local").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="http://afd.countrydashboards.com/dataviz/local/Country_dashboard_local.html" width="100%" height="100%" frameborder="0"></iframe>');
+		   $(this).addClass('active');
+			$("#Country_Dashboard").removeClass('active');
+		   	$("#Glance").removeClass('active');
+			$("#Data").removeClass('active');
+			$("#Inequality").removeClass('active');
+			$("#about").removeClass('active');
+			$("#home").removeClass('active');
+            $("#BigBrowser").removeClass('active');
+		});
+        
+        
+        $("#Initiative_sahel").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="http://afd.countrydashboards.com/datastory/Initiative+Sahel.html" width="100%" height="100%" frameborder="0"></iframe>');})
+        
+		$("#WDI").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="http://afd.countrydashboards.com/WDI+browser.html" width="100%" height="100%" frameborder="0"></iframe>');})
+        $("#DHS").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="http://afd.countrydashboards.com/DHS+browser.html" width="100%" height="100%" frameborder="0"></iframe>');})
+        $("#FAO").click(function(e) {
+		   e.preventDefault();
+		   $('#frame').html('<iframe src="http://afd.countrydashboards.com/FAO+browser.html" width="100%" height="100%" frameborder="0"></iframe>');})
+	});
+</script>
+
+</head>
+<body>
+
+<a href="http://www.afd.fr" target="_blank"><img class="logo" src="logo.jpg"><img/></a>
+  
+	<div class="menu">
+	<ul>
+	   <li><a href="" id="home" class="active"><i class="fa fa-home w3-xlarge"></i></a></li>
+	  <li><a  href="Country_dashboard.html" id="Country_Dashboard">Country Dashboard </a></li>
+	   <li><a href="Glance.html" id="Glance">At a Glance </a></li>
+	   <li><a href="inequalityDashboard.html" id="Inequality">Inégalités</a></li>
+	   <li><a href="/dataviz/local/Country_dashboard_local.html" id="local">Cartes DHS</a></li>
+        
+        <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">#DataStory</a>
+        <div class="dropdown-content">
+            <a href="http://afd.countrydashboards.com/datastory/Initiative+Sahel.html" id="Initiative_sahel">Initiative Sahel - construction</a>
+            <!--a href="#">Soon: - UNHCR Refugees </a>
+            <a href="#">Soon! - ILO stat</a-->
+        </div>
+        </li>
+        
+        <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Big Browser</a>
+        <div class="dropdown-content">
+            <a href="http://afd.countrydashboards.com/WDI+browser.html" id="WDI">World Bank WDI</a>
+            <a href="http://afd.countrydashboards.com/DHS+browser.html" id="DHS">Demographic Health Surveys</a>
+            <a href="http://afd.countrydashboards.com/FAO+browser.html" id="FAO">FAO crop prices</a>
+            <!--a href="#">Soon: - UNHCR Refugees </a>
+            <a href="#">Soon! - ILO stat</a-->
+        </div>
+        </li>
+	  <li style="float:right"><a  href="" id="Data">#DataDriven wiki</a></li>
+	</ul>
+	</div>
+
+	<div class="mainframe">
+	<div id="frame" class="frame_css">
+        <iframe src="bamenda.html" width="100%" height="100%" frameborder="0"></iframe>
+	</div >
+	</div>
+  
+</body>
+
+</html>
+
