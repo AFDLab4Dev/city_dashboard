@@ -1,0 +1,185 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+    <title> City Dashboard - kenitra_Maroc</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        
+        .legend {
+            text-align: left;
+            line-height: 18px;
+            color: #555;
+        }
+        
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script type="text/javascript">
+        var map = L.map('map', {
+            center: [34.2540503, -6.5890166],
+            zoom: 13,
+            minZoom: 12
+        });
+        L.tileLayer('https://api.mapbox.com/styles/v1/etibdv/cj0kv2vnc003a2rt8m01gpf4h/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXRpYmR2IiwiYSI6ImNpejhvdWJmcjAwMW8yd28weTkzMnA1aDkifQ.i8UKq0M_sIN1qq8F6UAgFw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Dataviz from <a href="https://twitter.com/EtienneDavid">@EtienneDavid</a> with Python',
+            id: 'mapbox.light'
+        }).addTo(map);
+
+        function onEachFeature(feature, layer) {
+            var popupContent = "Type: " + feature.properties.amenity + "</br> Name: " +
+            feature.properties.name;
+
+            if (feature.properties && feature.properties.popupContent) {
+                popupContent += feature.properties.popupContent;
+            }
+
+            layer.bindPopup(popupContent);
+        }
+
+
+        var style_hospital = {
+            "color": "#f00000",
+            "backgroundColor": "#f00000",
+            "weight": 5,
+            "opacity": 0.65
+        };
+
+        var hospitalIcon = L.icon({
+            iconUrl: 'icon/hospital.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 37],
+            popupAnchor: [0, -28]
+        });
+
+        var geojsonLayer_hospital = new L.GeoJSON.AJAX("data/kenitra_Maroc-hospital.geojson", {
+            style: style_hospital,
+            onEachFeature: onEachFeature,
+
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: hospitalIcon
+                });
+            }
+        });
+        geojsonLayer_hospital.addTo(map);
+
+        var style_uni = {
+            "color": "#12a81c",
+            "weight": 5,
+            "opacity": 0.65
+        };
+        
+        var uniIcon = L.icon({
+            iconUrl: 'icon/uni.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 37],
+            popupAnchor: [0, -28]
+        });
+
+        var geojsonLayer_uni = new L.GeoJSON.AJAX("data/kenitra_Maroc-uni.geojson", {
+            onEachFeature: onEachFeature,
+            style: style_uni,
+                        pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: uniIcon
+                });
+                }
+        });
+
+
+        geojsonLayer_uni.addTo(map);
+   var townhallIcon = L.icon({
+            iconUrl: 'icon/townhall.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 37],
+            popupAnchor: [0, -28]
+        });
+        var geojsonLayer_townhall = new L.GeoJSON.AJAX("data/kenitra_Maroc-townhall.geojson", {
+            onEachFeature: onEachFeature,
+                        pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: townhallIcon
+                });
+                }
+        });
+        geojsonLayer_townhall.addTo(map)
+
+        var style_marketplace = {
+            "color": "#e9e223",
+            "weight": 5,
+            "opacity": 0.65
+        };
+        
+           var marketIcon = L.icon({
+            iconUrl: 'icon/market.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 37],
+            popupAnchor: [0, -28]
+        });
+
+        var geojsonLayer_marketplace = new L.GeoJSON.AJAX("data/kenitra_Maroc-marketplace.geojson", {
+            onEachFeature: onEachFeature,
+            style: style_marketplace,
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: marketIcon
+                });
+                }
+        });
+
+
+        geojsonLayer_marketplace.addTo(map)
+
+        L.control.scale({"imperial": false, "maxWidth" : 200}).addTo(map);
+        console.log(map.getBounds());
+
+    </script>
+</body>
+
+</html>
